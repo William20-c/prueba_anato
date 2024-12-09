@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Agencia extends Model
 {
     use HasFactory;
-
+    protected $fillable = [
+        'nombre', 
+        'nit',
+        'type',
+    ];
 
     public function getChildren()
     {

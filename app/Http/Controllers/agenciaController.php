@@ -13,7 +13,7 @@ class agenciaController extends Controller
      */
     public function index()
     {
-        $agencias  = Agencia::with('getChildren')->first(); 
+        $agencias  = Agencia::all(); 
         return view('agencias.index', compact('agencias'));
     }
 
@@ -29,8 +29,16 @@ class agenciaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function update(Request $request, $id)
+    {    
+        $agencia = Agencia::find($id);
+        
+        $agencia->name = $request->name;
+        $agencia->nit = $request->nit;
+        $agencia->type = $request->type;
+        $agencia->save();
+       
+    
+        return redirect('/agencia');
     }
 }
